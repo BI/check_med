@@ -1,0 +1,17 @@
+#!/bin/bash
+
+SHA1=$1
+DOCKER_HUB_ORG=$2 
+EB_ENV=$3
+
+# Create new Elastic Beanstalk version
+DOCKERRUN_FILE=$SHA1-Dockerrun.aws.json
+sed "s/<TAG>/$SHA1/"                < Dockerrun.aws.json.template > $DOCKERRUN_FILE-inter1
+sed "s/<DOCKER_REPO>/$DOCKER_REPO/" < $DOCKERRUN_FILE-inter1      > $DOCKERRUN_FILE-inter2
+sed "s/<S3_BUCKET>/$S3_BUCKET/"     < $DOCKERRUN_FILE-inter2      > $DOCKERRUN_FILE
+aws s3 cp $DOCKERRUN_FILE s3://$S3_BUCKET/$DOCKERRUN_FILE
+aws elasticbeanstalk create-application-version --application-name umd-check-med \
+  --version-label $SHA1 --source-bundle S3Bucket=$S3_BUCKET,S3Key=$DOCKERRUN_FILE
+
+# Update Elastic Beanstalk environment to new version
+aws elasticbeanstalk update-environment --environment-name $EB_ENV  --version-label $SHA1

@@ -1,0 +1,43 @@
+machine:
+  ruby:
+    version: 2.0.0
+  services:
+    - docker
+
+dependencies:
+  cache_directories:
+    - "~/docker"
+
+  override:
+    - sudo pip install awscli
+    - docker info
+    - if [[ -e ~/docker/image.tar ]]; then docker load -i ~/docker/image.tar; fi
+    - docker build -t $DOCKER_HUB_ORG/$DOCKER_REPO:$CIRCLE_SHA1 .
+    - mkdir -p ~/docker; docker save $DOCKER_HUB_ORG/$DOCKER_REPO:$CIRCLE_SHA1 > ~/docker/image.tar
+    - bundle install --local
+    - npm install -g webpack
+    - npm install
+    - ./setup.sh  
+
+#database:
+#  pre:
+#   - bundle install --local
+
+test:
+  post:
+    - docker run -d --net host -e "SECRET_KEY_BASE=abcd1234" -e "RAILS_ENV=production" $DOCKER_HUB_ORG/$DOCKER_REPO:$CIRCLE_SHA1; sleep 20
+    - curl --retry 10 --retry-delay 5 -v http://localhost:80
+
+#deployment:
+#  test2:
+#    branch: prerelease 
+#    owner: BI
+#    commands:
+#      - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+#      - ./deploy.sh $CIRCLE_SHA1 $DOCKER_HUB_ORG test-load-bal
+#  prod:
+#    branch: release
+#    owner: BI
+#    commands:
+#      - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+#      - ./deploy.sh $CIRCLE_SHA1 $DOCKER_HUB_ORG production

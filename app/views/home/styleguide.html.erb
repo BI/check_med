@@ -1,0 +1,199 @@
+<div class="row" style="padding-bottom:2em;">
+	<div class="column small-12">
+		<h1><span class="logo-font">CheckMed</span> Styleguide</h1>
+
+		<p>For our project we leveraged the following design resources;</p>
+
+		<ul>
+			<li><a href="http://foundation.zurb.com/">Foundation</a> - is being used to help with layout, both the <a href="http://foundation.zurb.com/docs/components/grid.html">grid</a> and <a href="http://foundation.zurb.com/docs/components/block_grid.html">block grid</a> are being utilized</li>
+			<li><a href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a> - was added for iconography needs, see below for a listing of icons used</li>
+			<li><a href="https://www.google.com/fonts">Google Fonts</a> - is being used for typography</li>
+		</ul>
+
+		<hr>
+
+		<h2>Logo</h2>
+
+		<p>The logo is composed of two elements Font Awesome <i class="fa fa-plus"></i> and the text <span class="logo-font">CheckMed</span>.  When <span class="logo-font">CheckMed</span> is shown in the footer there is no need for the Font Awesome <i class="fa fa-plus"></i> icon.  Below is an example of the structure required for the logo and call to action treatment.  Notice the call-to-action text is hidden when there is not parent element class of .justLanded present.</p>
+
+		<pre style="background-color: #eee;padding: 1em;">
+&lt;div class="row title-row"&gt;
+	&lt;div class="column column-justLanded small-12"&gt;
+		&lt;h1 class="title"&gt;
+			&lt;i class="fa fa-plus" aria-hidden="true"&gt;&lt;/i&gt; CheckMed
+		&gt;/h1&gt;
+		&lt;p class="call-to-action"&gt;Drug information for expecting and nursing mothers&lt;/p&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+		</pre>
+
+		<div class="row title-row">
+			<div class="column column-justLanded small-12">
+				<h1 class="title">
+					<i class="fa fa-plus" aria-hidden="true"></i> CheckMed
+				</h1>
+				<p class="call-to-action">Drug information for expecting and nursing mothers</p>
+			</div>
+		</div>
+
+		<p>Here is an example with the .justLanded positioned above the logo element.  Please note, when in the .justLanded state the content is intended to be centered vertically.  In the example shown below we have hard coded a <strong>padding-top:0px</strong> to keep this element concise.</p>
+		<pre style="background-color: #eee;padding: 1em;">
+&lt;div class="justLanded"&gt;
+	&lt;div class="row title-row" style="padding-top:0px;"&gt;
+		&lt;div class="column column-justLanded small-12"&gt;
+			&lt;h1 class="title"&gt;
+				&lt;i class="fa fa-plus" aria-hidden="true"&gt;&lt;/i&gt; CheckMed
+			&gt;/h1&gt;
+			&lt;p class="call-to-action"&gt;Drug information for expecting and nursing mothers&lt;/p&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+		</pre>
+
+		<div class="justLanded">
+			<div class="row title-row" style="padding-top:0px;">
+				<div class="column column-justLanded small-12">
+					<h1 class="title">
+						<i class="fa fa-plus" aria-hidden="true"></i> CheckMed
+					</h1>
+					<p class="call-to-action">Drug information for expecting and nursing mothers</p>
+				</div>
+			</div>
+		</div>
+
+		<hr/>
+
+		<h2>Fonts</h2>
+
+		<p>We have chosen to use the following fonts for application typography;</p>
+
+		<ul>
+			<li><span class="logo-font">Pacifico 400</span> - is being used for the <span class="logo-font">CheckMed</span> logo, this font should be gray <i class="fa fa-square" style="color:#666;"></i> #666</li>
+			<li><span style="font-family:Merriweather;font-weight:300;">Merriweather 300</span> - is being used for the call to action tagline on the home page</li>
+			<li>Source Sans Pro 300 - is being used for all body content</li>
+			<li><span style="font-weight:400;">Source Sans Pro 400</span> - is being used for headings</li>
+			<li><span style="font-weight:600;">Source Sans Pro 600</span> - is being used for headings</li>
+		</ul>
+
+		<hr/>
+
+		<h2>Colors</h2>
+
+		<ul class="fa-ul">
+			<li><i class="fa fa-square" style="color:#222;"></i> #222 - Near black is being used for all body text</li>
+			<li><i class="fa fa-square" style="color:#155b83;"></i> - Blue is being used for brand to identify brand names, provide hover effects on navigation items like <button href="javascript:void()" style="float: none;margin-right: 0;padding: 0;" class="button-reset button-chevron">Full Details <i class="fa fa-chevron-right"></i></button></li>
+			<li><i class="fa fa-square" style="color:#D83C3C;"></i> - Red is being used for both recall alert iconography <i class="fa fa-exclamation-circle" style="color:#D83C3C;"></i>, for the CheckMed logo mark <i class="fa fa-plus" style="color:#D83C3C;"></i> and for the :hover on the <button class="close" style="position: relative;padding: 0;display: inline-block;"><i class="fa fa-times"></i></button> that is used to close information cards</li>
+			<li><i class="fa fa-square" style="color:#ffa500;"></i> - Orange is being used for warning iconography <i class="fa fa-warning" style="color:#ffa500;"></i></li>
+		</ul>
+
+		<hr/>
+
+		<h2>Card Layout</h2>
+		<p>A card should have the following structure to achieve the layout shown below.</p>
+
+		<pre style="background-color: #eee;padding: 1em;">
+&lt;div class="layout-card"&gt;
+	&lt;button class="close"&gt;
+		&lt;i class="fa fa-times" aria-hidden="true"&gt;&lt;/i&gt;
+		&lt;span class="aria-text"&gt;Close&lt;/span&gt;
+	&lt;/button&gt;
+	&lt;div class="label-info"&gt;
+		&lt;div class="row"&gt;
+			&lt;div class="columns small-12"&gt;
+				&lt;h2 class="label-heading"&gt;
+					&lt;div class="label-title"&gt;
+						&lt;span class="label-brandName"&gt;Aspirin Adult low strength&lt;/span&gt;
+						&lt;span class="label-genericName"&gt;(ASPIRIN)&lt;/span&gt;
+					&lt;/div&gt;
+					&lt;div class="label-manufacturer"&gt;Valu Merchandisers Company (Best Choice)&lt;/div&gt;
+				&lt;/h2&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class="row label-recall"&gt;
+			&lt;div class="columns small-12"&gt;
+				&lt;i class="fa fa-exclamation-circle" aria-hidden="true"&gt;&lt;/i&gt;
+				&lt;span class="label-recall-text"&gt;
+					This item is currently under a 
+					&lt;span class="label-recall-badge"&gt;
+						Class II &lt;i class="fa fa-info-circle" aria-hidden="true"&gt;&lt;/i&gt;
+					&lt;/span&gt; 
+					recall.
+				&lt;/span&gt;
+				&lt;button class="label-openRecall"&gt;
+					RECALL REPORT &lt;i class="fa fa-chevron-right" aria-hidden="true"&gt;&lt;/i&gt;
+				&lt;/button&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class="row"&gt;
+			&lt;div class="columns small-12"&gt;
+				&lt;h3 class="label-warning"&gt;
+					&lt;i class="fa fa-warning" aria-hidden="true"&gt;&lt;/i&gt; Pregnant or Nursing Mothers
+				&lt;/h3&gt;
+				&lt;p&gt;
+					If pregnant or breast- feeding, ask a health professional before use. 
+					It is especially important not to use aspirin during the last 3 months 
+					of pregnancy unless definitely directed to do so by a doctor because 
+					it may cause problems in the unborn child or complications during delivery.
+				&lt;/p&gt;
+
+				&lt;p&gt;
+					&lt;span class="label-badge"&gt;Dosage&lt;/span&gt;Directions do not exceed 
+					recommended dosage drink a full glass of water with each dose adults and 
+					children 12 years of age and over: take 4 to 8 tablets every 4 hours not 
+					to exceed 48 tablets in 24 hours, unless directed by a doctor children under 
+					12 years of age: consult a doctor
+				&lt;/p&gt;
+				&lt;button class="label-control"&gt;
+					Full Details &lt;i class="fa fa-chevron-right" aria-hidden="true"&gt;&lt;/i&gt;
+				&lt;/button&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+		</pre>
+		
+		<div class="layout-card">
+			<button class="close">
+				<i class="fa fa-times"></i>
+				<span class="aria-text">Close</span>
+			</button>
+			<div class="label-info">
+				<div class="row">
+					<div class="columns small-12">
+						<h2 class="label-heading">
+							<div class="label-title">
+								<span class="label-brandName">Aspirin Adult low strength</span>
+								<span class="label-genericName">(ASPIRIN)</span>
+							</div>
+							<div class="label-manufacturer">Valu Merchandisers Company (Best Choice)</div>
+						</h2>
+					</div>
+				</div>
+				<div class="row label-recall">
+					<div class="columns small-12">
+						<i class="fa fa-exclamation-circle"></i>
+						<span class="label-recall-text">
+							This item is currently under a 
+							<span class="label-recall-badge">Class II <i class="fa fa-info-circle"></i></span> recall.
+						</span>
+						<button class="label-openRecall">RECALL REPORT <i class="fa fa-chevron-right"></i></button>
+					</div>
+				</div>
+				<div class="row">
+					<div class="columns small-12">
+						<h3 class="label-warning">
+							<i class="fa fa-warning"></i> Pregnant or Nursing Mothers
+						</h3>
+						<p>If pregnant or breast- feeding, ask a health professional before use. It is especially important not to use aspirin during the last 3 months of pregnancy unless definitely directed to do so by a doctor because it may cause problems in the unborn child or complications during delivery.</p>
+
+						<p><span class="label-badge">Dosage</span>Directions do not exceed recommended dosage drink a full glass of water with each dose adults and children 12 years of age and over: take 4 to 8 tablets every 4 hours not to exceed 48 tablets in 24 hours, unless directed by a doctor children under 12 years of age: consult a doctor</p>
+						<button class="label-control">Full Details <i class="fa fa-chevron-right"></i></button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<h2>Final Note</h2>
+		<p>We have tried our best to use repeatable structures throughout the markup.  In the <a href="https://github.com/BI/octo-wookie/blob/master/webpack/stylesheets/_octo-wookie.scss" target="_blank">_octo-wookie.scss</a> file you will notice at the top of the file $variables set for color, the font family and a default spacer (that mimics Foundation's margins).  Below the $variables you find a number of @extend classes that are reused in the styles that are defined in the rest of the document.</p><br/><br/>
+	</div>
+</div>
